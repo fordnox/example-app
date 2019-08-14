@@ -9,6 +9,9 @@ jobs:
     
     steps:
     - uses: actions/checkout@master
+    - uses: hostinger/actions/login@master
+      with:
+        creds: ${{ secrets.HOSTINGER_CREDENTIALS }}    
     - name: Run a one-line script
       run: echo Hello, world!
     - name: Run a multi-line script
@@ -16,3 +19,5 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
         composer install
+    - name: Deploy to Hostinger
+      run: hostinger --help
